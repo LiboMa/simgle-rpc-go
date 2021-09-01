@@ -2,7 +2,7 @@
 
 ### clone project 
 
-git clone https://
+git clone https://github.com/LiboMa/simgle.git
 
 ### run project
 
