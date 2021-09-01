@@ -35,11 +35,9 @@ func main() {
 	}
 	fmt.Println("connected for the RPC server")
 
-	// fmt.Println("ticker start...")
 	msg := Message{Id: *clientID, Msg: "PING"}
 
 	for {
-		//line := EncodeToBytes(msg)
 		time.Sleep(time.Second * 1)
 
 		if err != nil {
@@ -50,16 +48,12 @@ func main() {
 		// var response Response
 		var reply Response
 
-		//err = client.Call("Listener.Getline", msg, &response)
 		err = client.Call("Listener.Getline", msg, &reply)
 
 		if err != nil {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
-
-		//res := reply.(Response)
-		//fmt.Println(res)
 
 		// Load message body to struct
 		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
