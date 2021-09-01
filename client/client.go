@@ -60,15 +60,15 @@ func main() {
 		}
 
 		// Load message body to struct
-		var reply Response
-		err = json.Unmarshal(response.([]uint8), &reply)
+		var data Response
+		err = json.Unmarshal(response.([]uint8), &data)
 
 		if err != nil {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
 		log.Printf("%s\n", response)
-		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
+		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", data.Ts, data.Resp, data.Mark)
 
 	}
 
