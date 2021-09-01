@@ -95,7 +95,8 @@ func main() {
 		}
 		// log.Printf("Replied %v \n", response.([]uint8))
 		// log.Printf("Replied %s \n", response)
-		log.Printf("Timestame: %s, Original message: %v, Response message: %v, \nreponse Type: %T", reply.Ts, reply.Resp, reply.Mark, reply)
+		// log.Printf("Timestame: %s, Original message: %v, Response message: %v, \nreponse Type: %T", reply.Ts, reply.Resp, reply.Mark, reply)
+		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
 
 	}
 
