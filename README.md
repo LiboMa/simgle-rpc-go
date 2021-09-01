@@ -47,3 +47,4 @@ go run client.go -id 3
 ### Reference:
 * [https://gist.github.com/jordanorelli/2629049](https://gist.github.com/jordanorelli/2629049)
 * [https://chai2010.cn/advanced-go-programming-book/ch4-rpc/readme.html](https://chai2010.cn/advanced-go-programming-book/ch4-rpc/readme.html)
+* [https://github.com/cirocosta/sample-rpc-go/blob/master/server/server.go](https://github.com/cirocosta/sample-rpc-go/blob/master/server/server.go)
