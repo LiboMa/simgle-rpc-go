@@ -2,6 +2,8 @@ package main
 
 import (
 	//"bufio"
+	"bytes"
+	"encoding/gob"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -20,6 +22,29 @@ type Response struct {
 	Mark string    `json:"Mark"`
 	Resp Message   `json: Message`
 }
+
+func EncodeToBytes(p interface{}) []byte {
+
+	buf := bytes.Buffer{}
+	enc := gob.NewEncoder(&buf)
+	err := enc.Encode(p)
+	if err != nil {
+		log.Fatal(err)
+	}
+	// fmt.Println("uncompressed size (bytes): ", len(buf.Bytes()))
+	return buf.Bytes()
+}
+
+//func DecodeMessage(s []byte) Message {
+//
+//	msg := Message{}
+//	dec := gob.NewDecoder(bytes.NewReader(s))
+//	err := dec.Decode(&msg)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	return msg
+//}
 
 func main() {
 
@@ -40,7 +65,7 @@ func main() {
 	msg := Message{Id: *clientID, Msg: "PING"}
 
 	for {
-		//line := EncodeToBytes(msg)
+		line := EncodeToBytes(msg)
 		time.Sleep(time.Second * 1)
 
 		if err != nil {
@@ -51,14 +76,13 @@ func main() {
 		// var response Response
 		var response interface{}
 
-		err = client.Call("Listener.Getline", msg, &response)
+		err = client.Call("Listener.Getline", line, &response)
 
 		if err != nil {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
 
-		// Load message body to struct
 		var reply Response
 		err = json.Unmarshal(response.([]uint8), &reply)
 
@@ -66,6 +90,9 @@ func main() {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
+		// log.Printf("Replied %v \n", response.([]uint8))
+		// log.Printf("Replied %s \n", response)
+		// log.Printf("Timestame: %s, Original message: %v, Response message: %v, \nreponse Type: %T", reply.Ts, reply.Resp, reply.Mark, reply)
 		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
 
 	}
