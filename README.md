@@ -9,7 +9,7 @@ git clone https://github.com/LiboMa/simgle.git
 #### Server side
 
 ```bash
-cd server && go run rpc_simple_server.go
+cd server && go run server.go
 ```
     ...
     2021/09/01 16:52:38 line type -> []uint8, msg type -> main.Message
