@@ -51,6 +51,7 @@ func main() {
 		// var response Response
 		var response interface{}
 
+		//err = client.Call("Listener.Getline", msg, &response)
 		err = client.Call("Listener.Getline", msg, &response)
 
 		if err != nil {
@@ -66,7 +67,7 @@ func main() {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
-		log.Printf("%s", response)
+		log.Printf("%s\n", response)
 		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
 
 	}

@@ -47,7 +47,7 @@ func (l *Listener) Getline(msg *Message, resp *interface{}) error {
 	// msg := DecodeMessage(line)
 	//log.Printf("line type -> %T, msg type -> %T\n", line, msg)
 
-	fmt.Printf("handle message %v, from client: %d\n", msg.Msg, msg.Id)
+	fmt.Printf("handle message %s, from client: %d\n", msg.Msg, msg.Id)
 	// logic calculation here..
 	res := Response{Ts: time.Now(), Mark: "PONG", Resp: *msg}
 	resp_json, err := json.Marshal(res)
