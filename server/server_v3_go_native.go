@@ -29,37 +29,14 @@ type Response struct {
 	Resp Message
 }
 
-//func DecodeMessage(s []byte) Message {
-//
-//	msg := Message{}
-//	dec := gob.NewDecoder(bytes.NewReader(s))
-//	err := dec.Decode(&msg)
-//	if err != nil {
-//		log.Fatal(err)
-//	}
-//	return msg
-//}
-
 //func (l *Listener) Getline(line []byte, resp *string) error {
 func (l *Listener) Getline(msg *Message, resp *Response) error {
-	//func (l *Listener) Getline(msg *Message, resp *interface{}) error {
-	//fmt.Println(string(line))
-	// msg := DecodeMessage(line)
-	//log.Printf("line type -> %T, msg type -> %T\n", line, msg)
 
 	fmt.Printf("handle message %s, from client: %d\n", msg.Msg, msg.Id)
-	// logic calculation here..
 	*resp = Response{Ts: time.Now(), Mark: "PONG", Resp: *msg}
-	//resp_json, err := json.Marshal(res)
-	// logic calculation here..
 
-	//if err != nil {
-	//	log.Fatalf("Error occured during marshaling. Error: %s", err.Error())
-	//}
-
-	// reply logic result to client
-	//*resp = resp_json
 	return nil
+
 }
 
 func main() {
