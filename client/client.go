@@ -66,6 +66,7 @@ func main() {
 			fmt.Println("ERR")
 			log.Fatal(err)
 		}
+		log.Printf("%s", response)
 		log.Printf("Timestame: %s, Original message: %v, Response message: %v \n", reply.Ts, reply.Resp, reply.Mark)
 
 	}
