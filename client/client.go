@@ -51,10 +51,10 @@ func main() {
 	// set client flags
 
 	// func Int(name string, value int, usage string) *int
-	clientID := *flag.Int("id", 1, "the ID of RPC client.")
+	clientID := flag.Int("id", 1, "the ID of RPC client.")
 	flag.Parse()
 
-	fmt.Printf("TCP RPC client..with id %d \n", clientID)
+	fmt.Printf("TCP RPC client..with id %d \n", *clientID)
 
 	client, err := rpc.Dial("tcp", "localhost:6789")
 
@@ -65,10 +65,9 @@ func main() {
 	fmt.Println("connected for the RPC server")
 
 	// fmt.Println("ticker start...")
-	msg := Message{Id: 1, Msg: "PING"}
+	msg := Message{Id: *clientID, Msg: "PING"}
 
 	for {
-		//line, _, err := in.ReadLine(msg)
 		line := EncodeToBytes(msg)
 		time.Sleep(time.Second * 1)
 
@@ -77,8 +76,6 @@ func main() {
 		}
 
 		log.Println("Sending message <- ", msg)
-		decodemsg := DecodeToPerson(line)
-		log.Println("decoded msg", decodemsg)
 		// var response Response
 		var response interface{}
 
