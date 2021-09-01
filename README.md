@@ -42,3 +42,8 @@ go run client.go -id 3
     reponse Type: main.Response
     2021/09/01 16:50:45 Sending message <-  {2 PING}
     2021/09/01 16:50:45 Timestame: 2021-09-01 16:50:45.805505 +0800 CST, Original message: {2 PING}, Response message: PONG,
+
+
+### Reference:
+* [https://gist.github.com/jordanorelli/2629049](https://gist.github.com/jordanorelli/2629049)
+* [https://chai2010.cn/advanced-go-programming-book/ch4-rpc/readme.html](https://chai2010.cn/advanced-go-programming-book/ch4-rpc/readme.html)

@@ -35,16 +35,16 @@ func EncodeToBytes(p interface{}) []byte {
 	return buf.Bytes()
 }
 
-func DecodeToPerson(s []byte) Message {
-
-	msg := Message{}
-	dec := gob.NewDecoder(bytes.NewReader(s))
-	err := dec.Decode(&msg)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return msg
-}
+//func DecodeMessage(s []byte) Message {
+//
+//	msg := Message{}
+//	dec := gob.NewDecoder(bytes.NewReader(s))
+//	err := dec.Decode(&msg)
+//	if err != nil {
+//		log.Fatal(err)
+//	}
+//	return msg
+//}
 
 func main() {
 
@@ -54,14 +54,11 @@ func main() {
 	clientID := flag.Int("id", 1, "the ID of RPC client.")
 	flag.Parse()
 
-	fmt.Printf("TCP RPC client..with id %d \n", *clientID)
-
 	client, err := rpc.Dial("tcp", "localhost:6789")
-
+	fmt.Printf("TCP RPC client..with id %d \n", *clientID)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	fmt.Println("connected for the RPC server")
 
 	// fmt.Println("ticker start...")
